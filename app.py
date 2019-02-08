@@ -15,16 +15,15 @@ app = Flask(__name__)
     # linux or mac
         # python3 app.py
 
-@app.route('/<name>', methods=["GET"])
-def index(name):
-    print(name)
-    return render_template('index.html', name=name)
+@app.route('/', methods=["GET"])
+def index():
+    return render_template('index.html')
 
 # http://localhost:2000/get?name=lol&section=b
-@app.route('/get')
+@app.route('/POST')
 def get():
     name = request.args['name']
-    section = request.args['section']
-    return name
+    sem = request.args['sem']
+    return "Hello I'm <b>" + name + "</b> from <b>" + sem + "</b> sem"
 
 app.run(port=2000)
